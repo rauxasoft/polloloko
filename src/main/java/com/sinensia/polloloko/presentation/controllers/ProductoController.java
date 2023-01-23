@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.sinensia.polloloko.backend.model.Categoria;
 import com.sinensia.polloloko.backend.model.Producto;
 import com.sinensia.polloloko.backend.services.ProductoServices;
-import com.sinensia.polloloko.presentation.config.MensajeError;
 import com.sinensia.polloloko.presentation.config.PresentationException;
 
 @RestController
@@ -88,23 +86,5 @@ public class ProductoController {
 			
 		return ResponseEntity.accepted().build();
 	}
-	
-	// ***********************************************************************
-	//
-	// Exception Handler
-	//
-	// ***********************************************************************
-	
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> genericExceptionHandler(Exception e) {
-    	MensajeError mensajeError = new MensajeError(e.getMessage());
-    	return new ResponseEntity<MensajeError>(mensajeError, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-    
-    @ExceptionHandler(PresentationException.class)
-    public ResponseEntity<?> presentationExceptionHandler(PresentationException e) {
-    	MensajeError mensajeError = new MensajeError(e.getMessage());
-    	return new ResponseEntity<MensajeError>(mensajeError, e.getHttpStatus());
-    }
 	
 }

@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sinensia.polloloko.backend.model.Empleado;
 import com.sinensia.polloloko.backend.services.EmpleadoServices;
-import com.sinensia.polloloko.presentation.config.MensajeError;
+import com.sinensia.polloloko.presentation.config.PresentationException;
 
 @RestController
 public class EmpleadoController {
@@ -29,19 +29,15 @@ public class EmpleadoController {
 	}
 	
 	@GetMapping("/empleados/{codigo}")
-	public ResponseEntity<?> read(@PathVariable Long codigo) {
+	public Empleado read(@PathVariable Long codigo) {
 		
 		Empleado empleado = empleadoServices.read(codigo);
 		
 		if(empleado == null) {
-			
-			MensajeError error = new MensajeError("No existe el empleado con código " + codigo);
-			
-			return new ResponseEntity<MensajeError>(error, HttpStatus.NOT_FOUND);
-		
+			throw new PresentationException("No existe el empleado con código " + codigo, HttpStatus.NOT_FOUND);
 		}
 	
-		return new ResponseEntity<Empleado>(empleado, HttpStatus.OK);
+		return empleado;
 	}
 	
 	@PostMapping("/empleados")
@@ -58,11 +54,8 @@ public class EmpleadoController {
 					.created(ucb.path("/empleados/{codigo}").build(codigo))
 					.build(); 
 			
-		} catch(Exception e) {
-			
-			MensajeError error = new MensajeError(e.getMessage());
-			
-			return new ResponseEntity<MensajeError>(error, HttpStatus.BAD_REQUEST);
+		} catch(IllegalStateException e) {
+			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
 	}
@@ -72,12 +65,11 @@ public class EmpleadoController {
 		
 		try {
 			empleadoServices.update(empleado);
+			return ResponseEntity.noContent().build();
 		} catch(Exception e) {
-			MensajeError error = new MensajeError(e.getMessage());
-			return new ResponseEntity<MensajeError>(error, HttpStatus.BAD_REQUEST);
+			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
-		return ResponseEntity.noContent().build();
 	}
 
 }
