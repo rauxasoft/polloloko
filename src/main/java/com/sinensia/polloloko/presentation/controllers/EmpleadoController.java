@@ -18,6 +18,9 @@ import com.sinensia.polloloko.backend.business.model.Empleado;
 import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
 import com.sinensia.polloloko.presentation.config.PresentationException;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="Gestión de Empleados", description = "API de Polloloko para la gestión interna de los empleados de la empresa.")
 @RestController
 @RequestMapping("/empleados")
 public class EmpleadoController {

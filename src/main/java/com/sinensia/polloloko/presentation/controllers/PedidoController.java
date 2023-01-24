@@ -21,6 +21,9 @@ import com.sinensia.polloloko.backend.business.model.Pedido;
 import com.sinensia.polloloko.backend.business.services.PedidoServices;
 import com.sinensia.polloloko.presentation.config.PresentationException;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {
@@ -45,9 +48,13 @@ public class PedidoController {
 		return pedido;
 	}
 	
+	@Operation(description = "Esta es la descripción de la operación.", summary = "Este es el resumen..." )
 	@GetMapping
-	public List<Pedido> getPedidos(@RequestParam(required=false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm") Date desde, 
+	public List<Pedido> getPedidos(@Parameter(name = "desde", description = "<p>Sirve para...</p><ul><li>Esto</li><li>Lo otro</li></ul>")
+								   @RequestParam(required=false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm") Date desde,
+								   @Parameter(name = "hasta", description = "Sierve para esto y para lo otro...")
 								   @RequestParam(required=false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm") Date hasta,
+								   @Parameter(name = "empleado", description = "Sierve para esto y para lo otro...")
 								   @RequestParam(name="empleado", required=false) Long codigoEmpleado){
 		
 		if(desde == null && hasta == null && codigoEmpleado == null) {
