@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.services.impl;
+package com.sinensia.polloloko.backend.business.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
 
+import com.sinensia.polloloko.backend.business.model.Empleado;
+import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
 import com.sinensia.polloloko.backend.integration.DummyDB;
-import com.sinensia.polloloko.backend.model.Empleado;
-import com.sinensia.polloloko.backend.services.EmpleadoServices;
 
 @Service
 public class EmpleadoServicesImpl implements EmpleadoServices{

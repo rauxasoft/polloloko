@@ -1,9 +1,10 @@
-package com.sinensia.polloloko.backend.services;
+package com.sinensia.polloloko.backend.business.services;
 
 import java.util.Date;
 import java.util.List;
 
-import com.sinensia.polloloko.backend.model.Pedido;
+import com.sinensia.polloloko.backend.business.model.Estado;
+import com.sinensia.polloloko.backend.business.model.Pedido;
 
 public interface PedidoServices {
 
@@ -13,5 +14,7 @@ public interface PedidoServices {
 	List<Pedido> getBetweenFechas(Date desde, Date hasta);
 	
 	Long create(Pedido pedido);
+	
+	List<Estado> getEstados();
 	
 }

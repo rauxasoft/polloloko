@@ -10,22 +10,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.sinensia.polloloko.backend.model.Categoria;
-import com.sinensia.polloloko.backend.model.Producto;
-import com.sinensia.polloloko.backend.services.ProductoServices;
+import com.sinensia.polloloko.backend.business.model.Categoria;
+import com.sinensia.polloloko.backend.business.model.Producto;
+import com.sinensia.polloloko.backend.business.services.ProductoServices;
 import com.sinensia.polloloko.presentation.config.PresentationException;
 
 @RestController
+@RequestMapping("/productos")
 public class ProductoController {
 
 	@Autowired
 	private ProductoServices productoServices;
 	
-	@GetMapping("/productos")
+	@GetMapping("/categorias")
+	public List<Categoria> getCategorias(){
+		return productoServices.getCategorias();
+	}
+	
+	@GetMapping
 	public List<Producto> getProductos(@RequestParam(required=false) Double min, 
 									   @RequestParam(required=false) Double max,
 									   @RequestParam(required=false) Categoria categoria){
@@ -47,7 +54,7 @@ public class ProductoController {
 		return productos;
 	}
 	
-	@GetMapping("/productos/{codigo}")
+	@GetMapping("/{codigo}")
 	public Producto getByCodigo(@PathVariable Long codigo) {
 		
 		Producto producto = productoServices.read(codigo);
@@ -59,7 +66,7 @@ public class ProductoController {
 		return producto;
 	}
 	
-	@PostMapping("/productos")
+	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Producto producto, UriComponentsBuilder ucb){
 		
 		Producto createdProducto = null;
@@ -75,7 +82,7 @@ public class ProductoController {
 				.build(); 
 	}
 	
-	@PutMapping("/productos")
+	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Producto producto){
 		
 		try {

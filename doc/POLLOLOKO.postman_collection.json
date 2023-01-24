@@ -230,13 +230,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categorias",
+							"raw": "http://localhost:8080/productos/categorias",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"productos",
 								"categorias"
 							]
 						}
@@ -254,7 +255,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/pedidos",
+							"raw": "http://localhost:8080/pedidos?empleado=101",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -276,8 +277,7 @@
 								},
 								{
 									"key": "empleado",
-									"value": "100",
-									"disabled": true
+									"value": "101"
 								}
 							]
 						}
@@ -291,7 +291,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "{\r\n    \"empleado\": { \"codigo\": 101 },\r\n    \"fechaHora\": \"2023-01-15T11:03:00.000+00:00\",\r\n    \"estado\": \"NUEVO\",\r\n    \"observaciones\": null,\r\n    \"lineas\": [\r\n        {\"producto\": {\"codigo\": 15 },\"cantidad\": 5 },\r\n        {\"producto\": {\"codigo\": 11 },\"cantidad\": 8 },\r\n        {\"producto\": {\"codigo\": 14 },\"cantidad\": 2 }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -343,13 +343,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estados",
+							"raw": "http://localhost:8080/pedidos/estados",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"pedidos",
 								"estados"
 							]
 						}

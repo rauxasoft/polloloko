@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.sinensia.polloloko.backend.model.Categoria;
-import com.sinensia.polloloko.backend.model.Empleado;
-import com.sinensia.polloloko.backend.model.Estado;
-import com.sinensia.polloloko.backend.model.LineaPedido;
-import com.sinensia.polloloko.backend.model.Pedido;
-import com.sinensia.polloloko.backend.model.Producto;
+import com.sinensia.polloloko.backend.business.model.Categoria;
+import com.sinensia.polloloko.backend.business.model.Empleado;
+import com.sinensia.polloloko.backend.business.model.Estado;
+import com.sinensia.polloloko.backend.business.model.LineaPedido;
+import com.sinensia.polloloko.backend.business.model.Pedido;
+import com.sinensia.polloloko.backend.business.model.Producto;
 
 public class DummyDB {
 
@@ -60,6 +60,7 @@ public class DummyDB {
 		Date fecha3 = null;
 		Date fecha4 = null;
 		Date fecha5 = null;
+		Date fecha6 = null;
 		
 		try {
 			fecha1 = sdf.parse("01/10/1919");
@@ -67,6 +68,7 @@ public class DummyDB {
 			fecha3 = sdf.parse("03/10/1919");
 			fecha4 = sdf.parse("04/10/1919");
 			fecha5 = sdf.parse("05/10/1919");
+			fecha6 = sdf.parse("05/10/1919");
 			
 		} catch(Exception e) {
 			
@@ -77,6 +79,7 @@ public class DummyDB {
 		Producto producto3 = new Producto(12L,"Cafe cortado", Categoria.CAFE, "Delicioso cafe cortado.", 2.3, fecha3);
 		Producto producto4 = new Producto(13L,"Cocacola Zero", Categoria.BEBIDA, "Lata de Cocacola Zero 33ml.", 2.7, fecha4);
 		Producto producto5 = new Producto(14L,"Patatas Bravas", Categoria.TAPA, "Deliociosas patatas con salsa brava muy picante.", 8.0, fecha5);
+		Producto producto6 = new Producto(15L,"Copa de Oban", Categoria.LICOR, "Delicioso whisky escocés de 14 años", 20.0, fecha6);
 		
 		producto5.setDescatalogado(true);
 		
@@ -85,6 +88,7 @@ public class DummyDB {
 		PRODUCTOS_DB.put(producto3.getCodigo(), producto3);
 		PRODUCTOS_DB.put(producto4.getCodigo(), producto4);
 		PRODUCTOS_DB.put(producto5.getCodigo(), producto5);
+		PRODUCTOS_DB.put(producto6.getCodigo(), producto6);
 		
 		Empleado empleado1 = new Empleado();
 		Empleado empleado2 = new Empleado();

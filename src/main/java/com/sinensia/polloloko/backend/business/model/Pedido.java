@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.model;
+package com.sinensia.polloloko.backend.business.model;
 
 import java.io.Serializable;
 import java.util.Date;

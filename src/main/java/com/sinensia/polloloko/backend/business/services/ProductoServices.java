@@ -1,11 +1,11 @@
-package com.sinensia.polloloko.backend.services;
+package com.sinensia.polloloko.backend.business.services;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.sinensia.polloloko.backend.model.Categoria;
-import com.sinensia.polloloko.backend.model.Producto;
+import com.sinensia.polloloko.backend.business.model.Categoria;
+import com.sinensia.polloloko.backend.business.model.Producto;
 
 public interface ProductoServices {
 
@@ -48,5 +48,6 @@ public interface ProductoServices {
 	 */
 	void incrementarPrecios(Categoria categoria, double porcentaje);
 
-
+	List<Categoria> getCategorias();
+	
 }

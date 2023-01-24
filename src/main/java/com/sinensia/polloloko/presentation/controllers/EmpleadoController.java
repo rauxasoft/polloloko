@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.sinensia.polloloko.backend.model.Empleado;
-import com.sinensia.polloloko.backend.services.EmpleadoServices;
+import com.sinensia.polloloko.backend.business.model.Empleado;
+import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
 import com.sinensia.polloloko.presentation.config.PresentationException;
 
 @RestController
+@RequestMapping("/empleados")
 public class EmpleadoController {
 
 	@Autowired
 	private EmpleadoServices empleadoServices;
 	
-	@GetMapping("/empleados")
+	@GetMapping
 	public List<Empleado> getAll(){
 		return empleadoServices.getAll();
 	}
 	
-	@GetMapping("/empleados/{codigo}")
+	@GetMapping("/{codigo}")
 	public Empleado read(@PathVariable Long codigo) {
 		
 		Empleado empleado = empleadoServices.read(codigo);
@@ -40,7 +42,7 @@ public class EmpleadoController {
 		return empleado;
 	}
 	
-	@PostMapping("/empleados")
+	@PostMapping
 	public ResponseEntity<?> crear(@RequestBody Empleado empleado, UriComponentsBuilder ucb) {
 		
 		Empleado createdEmpleado = null;
@@ -60,7 +62,7 @@ public class EmpleadoController {
 		
 	}
 	
-	@PutMapping("/empleados")
+	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Empleado empleado) {
 		
 		try {

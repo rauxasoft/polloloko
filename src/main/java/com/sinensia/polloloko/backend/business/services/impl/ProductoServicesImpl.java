@@ -1,6 +1,7 @@
-package com.sinensia.polloloko.backend.services.impl;
+package com.sinensia.polloloko.backend.business.services.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +11,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.sinensia.polloloko.backend.business.model.Categoria;
+import com.sinensia.polloloko.backend.business.model.Producto;
+import com.sinensia.polloloko.backend.business.services.ProductoServices;
 import com.sinensia.polloloko.backend.integration.DummyDB;
-import com.sinensia.polloloko.backend.model.Categoria;
-import com.sinensia.polloloko.backend.model.Producto;
-import com.sinensia.polloloko.backend.services.ProductoServices;
 
 @Service
 public class ProductoServicesImpl implements ProductoServices {
@@ -207,6 +208,11 @@ public class ProductoServicesImpl implements ProductoServices {
 			
 		}
 		
+	}
+
+	@Override
+	public List<Categoria> getCategorias() {
+		return Arrays.asList(Categoria.values());
 	}
 
 }

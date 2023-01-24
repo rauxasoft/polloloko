@@ -1,8 +1,8 @@
-package com.sinensia.polloloko.backend.services;
+package com.sinensia.polloloko.backend.business.services;
 
 import java.util.List;
 
-import com.sinensia.polloloko.backend.model.Empleado;
+import com.sinensia.polloloko.backend.business.model.Empleado;
 
 public interface EmpleadoServices {
 

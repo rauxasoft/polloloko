@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.model;
+package com.sinensia.polloloko.backend.business.model;
 
 public enum Categoria {
 

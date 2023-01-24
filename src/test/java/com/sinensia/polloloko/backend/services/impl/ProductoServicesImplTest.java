@@ -10,9 +10,10 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.sinensia.polloloko.backend.model.Categoria;
-import com.sinensia.polloloko.backend.model.Producto;
-import com.sinensia.polloloko.backend.services.ProductoServices;
+import com.sinensia.polloloko.backend.business.model.Categoria;
+import com.sinensia.polloloko.backend.business.model.Producto;
+import com.sinensia.polloloko.backend.business.services.ProductoServices;
+import com.sinensia.polloloko.backend.business.services.impl.ProductoServicesImpl;
 
 class ProductoServicesImplTest {
 
