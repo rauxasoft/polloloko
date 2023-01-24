@@ -28,7 +28,7 @@ public class ProductoServicesImpl implements ProductoServices {
 	public Producto create(Producto producto) { 
 		
 		if(producto.getCodigo() != null) {
-			throw new IllegalStateException("No se puede crear un producto que ya tiene c�digo [" +  producto.getCodigo() + "]");
+			throw new IllegalStateException("No se puede crear un producto que ya tiene código [" +  producto.getCodigo() + "]");
 		}
 		
 		Long ultimoCodigo = ((TreeMap<Long, Producto>) dummyDB.getProductosDB()).lastKey();
@@ -53,7 +53,7 @@ public class ProductoServicesImpl implements ProductoServices {
 		Long codigo = producto.getCodigo();
 		
 		if(!dummyDB.getProductosDB().containsKey(codigo)) {
-			throw new IllegalStateException("No existe un producto con c�digo [" + codigo + "]");
+			throw new IllegalStateException("No existe un producto con código [" + codigo + "]");
 		}
 		
 		dummyDB.getProductosDB().replace(codigo, producto);
@@ -64,7 +64,7 @@ public class ProductoServicesImpl implements ProductoServices {
 	public void delete(Long codigo) {
 		
 		if(!dummyDB.getProductosDB().containsKey(codigo)) {
-			throw new IllegalStateException("No existe un producto con c�digo [" + codigo + "]");
+			throw new IllegalStateException("No existe un producto con código [" + codigo + "]");
 		}
 		
 		dummyDB.getProductosDB().remove(codigo);
