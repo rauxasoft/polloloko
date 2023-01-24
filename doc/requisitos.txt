@@ -34,6 +34,3 @@ POST /pedidos
 
 - Implementar método create(Pedido pedido)
 - Crear el end-point en el controlador de pedidos.
-
-
-
