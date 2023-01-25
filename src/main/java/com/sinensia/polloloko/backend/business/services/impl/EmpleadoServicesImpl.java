@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sinensia.polloloko.backend.business.model.Empleado;
 import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
-import com.sinensia.polloloko.backend.integration.DummyDB;
+import com.sinensia.polloloko.backend.integration.repositories.DummyDB;
 
 @Service
 public class EmpleadoServicesImpl implements EmpleadoServices{

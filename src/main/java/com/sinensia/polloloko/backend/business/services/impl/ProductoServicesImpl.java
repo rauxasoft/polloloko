@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.sinensia.polloloko.backend.business.model.Categoria;
 import com.sinensia.polloloko.backend.business.model.Producto;
 import com.sinensia.polloloko.backend.business.services.ProductoServices;
-import com.sinensia.polloloko.backend.integration.DummyDB;
+import com.sinensia.polloloko.backend.integration.repositories.DummyDB;
 
 @Service
 public class ProductoServicesImpl implements ProductoServices {
