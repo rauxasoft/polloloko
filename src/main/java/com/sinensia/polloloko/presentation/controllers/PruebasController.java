@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sinensia.polloloko.backend.business.model.Empleado;
+import com.sinensia.polloloko.backend.business.model.Pedido;
 import com.sinensia.polloloko.backend.business.model.Producto;
 import com.sinensia.polloloko.backend.integration.repositories.EmpleadoRepository;
+import com.sinensia.polloloko.backend.integration.repositories.PedidoRepository;
 import com.sinensia.polloloko.backend.integration.repositories.ProductoRepository;
 
 @RestController
@@ -21,6 +23,14 @@ public class PruebasController {
 	
 	@Autowired
 	private ProductoRepository productoRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@GetMapping("/pedidos")
+	public List<Pedido> getPedidos(){
+		return pedidoRepository.findAll();
+	}
 	
 	@GetMapping("/empleados")
 	public List<Empleado> getEmpleados(){

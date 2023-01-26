@@ -2,10 +2,18 @@ package com.sinensia.polloloko.backend.business.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Embeddable
 public class LineaPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@ManyToOne
+	@JoinColumn(name="CODIGO_PRODUCTO")
 	private Producto producto;
+	
 	private int cantidad;
 
 	public LineaPedido() {
