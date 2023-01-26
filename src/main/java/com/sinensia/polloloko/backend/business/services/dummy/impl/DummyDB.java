@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.integration.repositories.dummy;
+package com.sinensia.polloloko.backend.business.services.dummy.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -100,9 +100,9 @@ public class DummyDB {
 		empleado1.setApellido2("Salvador");
 		
 		empleado2.setCodigo(101L);
-		empleado2.setNombre("Pepin");
-		empleado2.setApellido1("Gilvez");
-		empleado2.setApellido2("Ridruejo");
+		empleado2.setNombre("Pepin DUMMY");
+		empleado2.setApellido1("Gilvez DUMMY");
+		empleado2.setApellido2("Ridruejo DUMMY");
 		
 		empleado3.setCodigo(102L);
 		empleado3.setNombre("Carlota");

@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.polloloko.backend.business.model.Empleado;
 import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
-import com.sinensia.polloloko.backend.integration.repositories.dummy.DummyDB;
 
 @Service
-@Primary
 public class EmpleadoServicesDummyImpl implements EmpleadoServices{
 
 	private final DummyDB dummyDB;

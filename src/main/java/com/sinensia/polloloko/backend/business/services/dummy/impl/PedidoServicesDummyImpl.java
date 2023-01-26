@@ -15,7 +15,6 @@ import com.sinensia.polloloko.backend.business.model.Estado;
 import com.sinensia.polloloko.backend.business.model.Pedido;
 import com.sinensia.polloloko.backend.business.model.Producto;
 import com.sinensia.polloloko.backend.business.services.PedidoServices;
-import com.sinensia.polloloko.backend.integration.repositories.dummy.DummyDB;
 
 @Service
 @Primary
