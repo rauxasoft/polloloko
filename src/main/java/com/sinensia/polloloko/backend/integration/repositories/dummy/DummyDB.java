@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.integration.repositories;
+package com.sinensia.polloloko.backend.integration.repositories.dummy;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;

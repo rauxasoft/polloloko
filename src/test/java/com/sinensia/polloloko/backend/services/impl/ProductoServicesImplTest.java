@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import com.sinensia.polloloko.backend.business.model.Categoria;
 import com.sinensia.polloloko.backend.business.model.Producto;
 import com.sinensia.polloloko.backend.business.services.ProductoServices;
-import com.sinensia.polloloko.backend.business.services.impl.ProductoServicesImpl;
+import com.sinensia.polloloko.backend.business.services.dummy.impl.ProductoServicesDummyImpl;
 
 class ProductoServicesImplTest {
 
@@ -21,7 +21,7 @@ class ProductoServicesImplTest {
 	
 	@BeforeEach
 	void init() {
-		productoServices = new ProductoServicesImpl();
+		productoServices = new ProductoServicesDummyImpl();
 	}
 	
 	@Test
