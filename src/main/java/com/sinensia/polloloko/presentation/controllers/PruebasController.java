@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinensia.polloloko.backend.business.model.Coche;
-import com.sinensia.polloloko.backend.integration.repositories.CocheRepository;
+import com.sinensia.polloloko.backend.business.model.Empleado;
+import com.sinensia.polloloko.backend.integration.repositories.EmpleadoRepository;
 
 @RestController
 @RequestMapping("/pruebas")
 public class PruebasController {
 
 	@Autowired
-	private CocheRepository cocheRepository;
+	private EmpleadoRepository empleadoRepository;
 	
-	@GetMapping("/coches")
-	public List<Coche> getCoches(){
-		return cocheRepository.findAll();
+	@GetMapping("/empleados")
+	public List<Empleado> getEmpleados(){
+		return empleadoRepository.findAll();
 	}
 }

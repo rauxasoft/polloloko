@@ -1,6 +1,4 @@
-INSERT INTO COCHES (MATRICULA, MARCA, MODEL, FECHA_MATRICULACION, PRECIO, NUMERO_PUERTAS, MOTOR, AUTOMATICO) VALUES
-('3445DKM','Volkswagen','Golf Plus TDI', '2006-02-24', 32000, 4, 'DIESEL', false),
-('9339FFW','Volkswagen','Touran TDI', '2007-10-15', 37000, 4, 'DIESEL', true),
-('9069LMN','AUDI','A8', '2020-02-11', 56000, 4, 'GASOLINA', true),
-('2002BCC','Renault','Twingo', '2004-10-17', 2600, 4, 'GASOLINA', false);
-
+INSERT INTO EMPLEADOS (CODIGO, NOMBRE, APELLIDO1, APELLIDO2) VALUES
+(100, 'Pepín', 'Gálvez', 'Ridruejo'),
+(101, 'Honorio', 'Martín', 'Salvador'),
+(102, 'Carlota', 'Cifuentes', 'Merino');
