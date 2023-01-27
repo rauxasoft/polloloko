@@ -43,14 +43,12 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public List<Producto> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findAll();
 	}
 
 	@Override
 	public List<Producto> getByCategoria(Categoria categoria) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findByCategoria(categoria);
 	}
 
 	@Override
