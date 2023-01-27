@@ -1,11 +1,11 @@
 package com.sinensia.polloloko.backend.business.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.polloloko.backend.business.model.Empleado;
@@ -13,7 +13,6 @@ import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
 import com.sinensia.polloloko.backend.integration.repositories.EmpleadoRepository;
 
 @Service
-@Primary
 public class EmpleadoServicesImpl implements EmpleadoServices {
 
 	@Autowired
@@ -27,19 +26,38 @@ public class EmpleadoServicesImpl implements EmpleadoServices {
 			throw new IllegalStateException("El código de empleado deber ser null.");
 		}
 		
-		Empleado createdEmpleado = empleadoRepository.save(empleado);
-		
-		return createdEmpleado;
+		return empleadoRepository.save(empleado);
 	}
 
 	@Override
 	public Empleado read(Long codigo) {
-		return empleadoRepository.findById(codigo).orElse(null);
+		
+		// findById devuelve un Optional. Hemos de devolver lo que hay "dentro" del Optional siempre y cuando no esté vacío.
+		// Si el Optional está vacío devolveremos null.
+		// La solución "oneliner" es: return empleadoRepository.findById(codigo).orElse(null);
+		
+		Optional<Empleado> optional = empleadoRepository.findById(codigo);
+		
+		Empleado empleado = null;
+		
+		if(optional.isPresent()) {
+			empleado = optional.get();
+		}
+	
+		return empleado;
 	}
 
 	@Override
+	@Transactional
 	public void update(Empleado empleado) {
-		// TODO Auto-generated method stub
+		
+		boolean existe = empleadoRepository.existsById(empleado.getCodigo());
+		
+		if(!existe) {
+			throw new IllegalStateException("No existe un empleado con el código [" + empleado.getCodigo() + "]");
+		}
+		
+		empleadoRepository.save(empleado);
 		
 	}
 

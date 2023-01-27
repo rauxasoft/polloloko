@@ -4,15 +4,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.polloloko.backend.business.model.Categoria;
 import com.sinensia.polloloko.backend.business.model.Producto;
 import com.sinensia.polloloko.backend.business.services.ProductoServices;
+import com.sinensia.polloloko.backend.integration.repositories.ProductoRepository;
 
 @Service
 public class ProductoServicesImpl implements ProductoServices {
 
+	@Autowired
+	private ProductoRepository productoRepository;
+	
 	@Override
 	public Producto create(Producto producto) {
 		// TODO Auto-generated method stub
@@ -21,8 +26,7 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public Producto read(Long codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findById(codigo).orElse(null);
 	}
 
 	@Override
