@@ -23,8 +23,9 @@ public class BorrameController {
 		//return productoRepository.findByPrecioBetween(1.0, 1.8);
 		//return productoRepository.findByFechaAltaBetween(new Date(0), new Date());
 		//return productoRepository.getEstadisticaNumeroProductosByCategoria();
+		  return pedidoRepository.findByEmpleadoCodigo(100L);
 		
-		return null;
+		
 	}
 	
 	@GetMapping("/trigger2")
@@ -37,6 +38,6 @@ public class BorrameController {
 		//return productoServices.getEstadisticaPrecioMedioByCategoria();
 		//       productoServices.incrementarPrecios(Categoria.COMIDA, 5.0);
 		
-		return null;
+		return pedidoServices.getByCodigoEmpleado(100L);
 	}
 }

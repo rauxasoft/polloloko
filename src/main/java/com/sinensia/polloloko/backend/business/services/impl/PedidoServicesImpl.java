@@ -1,51 +1,56 @@
 package com.sinensia.polloloko.backend.business.services.impl;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sinensia.polloloko.backend.business.model.Estado;
 import com.sinensia.polloloko.backend.business.model.Pedido;
 import com.sinensia.polloloko.backend.business.services.PedidoServices;
+import com.sinensia.polloloko.backend.integration.repositories.PedidoRepository;
 
 @Service
 public class PedidoServicesImpl implements PedidoServices{
 
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
 	@Override
 	public Pedido read(Long codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		return pedidoRepository.findById(codigo).orElse(null);
 	}
 
 	@Override
 	public List<Pedido> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return pedidoRepository.findAll();
 	}
 
 	@Override
 	public List<Pedido> getByCodigoEmpleado(Long codigoEmpleado) {
-		// TODO Auto-generated method stub
-		return null;
+		return pedidoRepository.findByEmpleadoCodigo(codigoEmpleado);
 	}
 
 	@Override
 	public List<Pedido> getBetweenFechas(Date desde, Date hasta) {
-		// TODO Auto-generated method stub
-		return null;
+		return pedidoRepository.findByFechaHoraBetween(desde, hasta);
 	}
 
 	@Override
 	public Long create(Pedido pedido) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(pedido.getCodigo() != null) {
+			throw new IllegalStateException("El código de pedido deber ser null.");
+		}
+		
+		return pedidoRepository.save(pedido).getCodigo();
 	}
 
 	@Override
 	public List<Estado> getEstados() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(Estado.values());
 	}
 
 }
