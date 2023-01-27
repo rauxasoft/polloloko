@@ -1,8 +1,10 @@
 package com.sinensia.polloloko.backend.integration.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.sinensia.polloloko.backend.business.model.Categoria;
@@ -10,13 +12,23 @@ import com.sinensia.polloloko.backend.business.model.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-	// Implementación usando el sistema de nombres de Spring Data (5.3. Query methods)
-	
 	List<Producto> findByCategoria(Categoria catgoria);
+
+	@Query("SELECT COUNT(p) FROM Producto p WHERE p.categoria = :categoria")
+	int getNumeroTotalProductosByCategoria(Categoria categoria);
 	
-	// Implementación usando el lenguaje de consulta JPQL (Java Persistence Query Languaje)
+	List<Producto> findByPrecioBetween(double min, double max);
 	
-	@Query("SELECT p FROM Producto p WHERE p.categoria = :categoria")
-	List<Producto> dameProductosPorCategoria(Categoria categoria);
+	List<Producto> findByFechaAltaBetween(Date desde, Date hasta);
+	
+	@Query("SELECT p.categoria, COUNT(p) FROM Producto p GROUP BY p.categoria ORDER BY p.categoria")
+	List<Object[]> getEstadisticaNumeroProductosByCategoria();
+	
+	@Query("SELECT p.categoria, AVG(p.precio) FROM Producto p GROUP BY p.categoria ORDER BY p.categoria")
+	List<Object[]> getEstadisticaPrecioMedioByCategoria();
+	
+	@Modifying
+	@Query("UPDATE Producto p SET p.precio = p.precio + (p.precio * :porcentaje / 100) WHERE p.categoria = :categoria")
+	int incrementarPrecios(Categoria categoria, double porcentaje);
 	
 }

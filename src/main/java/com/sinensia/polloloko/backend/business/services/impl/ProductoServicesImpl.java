@@ -1,8 +1,12 @@
 package com.sinensia.polloloko.backend.business.services.impl;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +23,14 @@ public class ProductoServicesImpl implements ProductoServices {
 	private ProductoRepository productoRepository;
 	
 	@Override
+	@Transactional
 	public Producto create(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(producto.getCodigo() != null) {
+			throw new IllegalStateException("El código de producto deber ser null.");
+		}
+		
+		return productoRepository.save(producto);
 	}
 
 	@Override
@@ -30,15 +39,23 @@ public class ProductoServicesImpl implements ProductoServices {
 	}
 
 	@Override
+	@Transactional
 	public void update(Producto producto) {
-		// TODO Auto-generated method stub
+		
+		boolean existe = productoRepository.existsById(producto.getCodigo());
+		
+		if(!existe) {
+			throw new IllegalStateException("No existe un producto con el código [" + producto.getCodigo() + "]");
+		}
+		
+		productoRepository.save(producto);
 		
 	}
 
 	@Override
+	@Transactional
 	public void delete(Long codigo) {
-		// TODO Auto-generated method stub
-		
+		productoRepository.deleteById(codigo);
 	}
 
 	@Override
@@ -53,50 +70,70 @@ public class ProductoServicesImpl implements ProductoServices {
 
 	@Override
 	public int getNumeroTotalProductos() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) productoRepository.count();
 	}
 
 	@Override
 	public int getNumeroTotalProductosByCategoria(Categoria categoria) {
-		// TODO Auto-generated method stub
-		return 0;
+		return productoRepository.getNumeroTotalProductosByCategoria(categoria);
 	}
 
 	@Override
 	public List<Producto> getBetweenPriceRange(double min, double max) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findByPrecioBetween(min, max);
 	}
 
 	@Override
 	public List<Producto> getBetweenDates(Date desde, Date hasta) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findByFechaAltaBetween(desde, hasta);
 	}
 
 	@Override
 	public Map<Categoria, Integer> getEstadisticaNumeroProductosByCategoria() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Object[]> estadisticasFromRepository = productoRepository.getEstadisticaNumeroProductosByCategoria();
+		
+		Map<Categoria, Integer> estadisticas = new HashMap<>();
+		
+		for(Categoria categoria: Categoria.values()) {
+			estadisticas.put(categoria, 0);
+		}
+		
+		for(Object[] fila: estadisticasFromRepository) {
+			estadisticas.replace((Categoria) fila[0], ((Long) fila[1]).intValue());
+		}
+	
+		return estadisticas;
 	}
 
 	@Override
 	public Map<Categoria, Double> getEstadisticaPrecioMedioByCategoria() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Object[]> estadisticasFromRepository = productoRepository.getEstadisticaPrecioMedioByCategoria();
+		
+		Map<Categoria, Double> estadisticas = new HashMap<>();
+		
+		for(Categoria categoria: Categoria.values()) {
+			estadisticas.put(categoria, null);
+		}
+		
+		for(Object[] fila: estadisticasFromRepository) {
+			estadisticas.replace((Categoria) fila[0], (Double) fila[1]);
+		}
+	
+		return estadisticas;
 	}
 
 	@Override
+	@Transactional
 	public void incrementarPrecios(Categoria categoria, double porcentaje) {
-		// TODO Auto-generated method stub
+		productoRepository.incrementarPrecios(categoria, porcentaje);
 		
 	}
 
 	@Override
 	public List<Categoria> getCategorias() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(Categoria.values());
 	}
 
 }
