@@ -32,10 +32,6 @@ public class EmpleadoServicesImpl implements EmpleadoServices {
 	@Override
 	public Empleado read(Long codigo) {
 		
-		// findById devuelve un Optional. Hemos de devolver lo que hay "dentro" del Optional siempre y cuando no esté vacío.
-		// Si el Optional está vacío devolveremos null.
-		// La solución "oneliner" es: return empleadoRepository.findById(codigo).orElse(null);
-		
 		Optional<Empleado> optional = empleadoRepository.findById(codigo);
 		
 		Empleado empleado = null;
@@ -64,6 +60,13 @@ public class EmpleadoServicesImpl implements EmpleadoServices {
 	@Override
 	@Transactional
 	public void delete(Long codigo) {
+		
+		boolean existe = empleadoRepository.existsById(codigo);
+		
+		if(!existe) {
+			throw new IllegalStateException("No existe un empleado con el código [" + codigo + "]");
+		}
+		
 		empleadoRepository.deleteById(codigo);	
 	}
 

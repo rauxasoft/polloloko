@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -89,6 +90,22 @@ public class PedidoController {
 			throw new PresentationException(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
+	}
+	
+	@PatchMapping("/{codigo}")
+	public void actualizarPedido(@PathVariable Long codigo, @RequestBody Pedido pedido) {
+		
+		Estado estado = pedido.getEstado();
+		
+		switch(estado) {
+			case CANCELADO: pedidoServices.cancelar(codigo); break;
+			case ENTREGADO: pedidoServices.entregar(codigo); break;
+			case EN_PROCESO: pedidoServices.iniciarProceso(codigo); break;
+			case PENDIENTE_ENTREGA: pedidoServices.ofrecerParaEntrega(codigo); break;
+		default:
+			break;
+		}
+	
 	}
 	
 }
