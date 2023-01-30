@@ -3,6 +3,8 @@ package com.sinensia.polloloko.presentation.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.sinensia.polloloko.backend.business.model.Pedido;
 import com.sinensia.polloloko.backend.business.services.PedidoServices;
 import com.sinensia.polloloko.backend.integration.repositories.PedidoRepository;
 
@@ -38,6 +40,18 @@ public class BorrameController {
 		//return productoServices.getEstadisticaPrecioMedioByCategoria();
 		//       productoServices.incrementarPrecios(Categoria.COMIDA, 5.0);
 		
-		return pedidoServices.getByCodigoEmpleado(100L);
+		Pedido pedido = pedidoServices.read(6L);
+		
+		System.out.println(pedido);
+		
+		pedidoServices.entregar(6L);
+		
+		pedido = null;
+		
+		pedido =  pedidoServices.read(6L);
+		
+		System.out.println(pedido);
+		
+		return pedido;
 	}
 }

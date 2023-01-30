@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,7 @@ public class PedidoServicesImpl implements PedidoServices{
 	}
 
 	@Override
+	@Transactional
 	public Long create(Pedido pedido) {
 		
 		if(pedido.getCodigo() != null) {
@@ -54,24 +57,28 @@ public class PedidoServicesImpl implements PedidoServices{
 	}
 
 	@Override
+	@Transactional
 	public void cancelar(Long codigo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void iniciarProceso(Long codigo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void ofrecerParaEntrega(Long codigo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public void entregar(Long codigo) {
 		// TODO Auto-generated method stub
 		
