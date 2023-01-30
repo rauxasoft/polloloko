@@ -53,4 +53,34 @@ public class PedidoServicesImpl implements PedidoServices{
 		return Arrays.asList(Estado.values());
 	}
 
+	@Override
+	public void cancelar(Long codigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void iniciarProceso(Long codigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ofrecerParaEntrega(Long codigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void entregar(Long codigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Pedido> getUltimosNPedidosByEstado(Estado estado, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
