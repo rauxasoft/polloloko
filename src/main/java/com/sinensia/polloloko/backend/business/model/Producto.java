@@ -2,6 +2,7 @@ package com.sinensia.polloloko.backend.business.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -102,6 +103,23 @@ public class Producto implements Serializable {
 
 	public void setDescatalogado(boolean descatalogado) {
 		this.descatalogado = descatalogado;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(codigo, other.codigo);
 	}
 
 	@Override
