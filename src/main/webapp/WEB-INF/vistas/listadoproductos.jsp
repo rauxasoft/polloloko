@@ -31,7 +31,7 @@
 						<td class="center">${producto.categoria}</td>
 						<td class="center">
 							<c:if test="${producto.descatalogado}">
-								<span style="color:green;">DESCATALOGADO</span>
+								<span style="color:red;">DESCATALOGADO</span>
 							</c:if>
 						</td>
 						<td><a href="ficha-producto?codigo=${producto.codigo}">ver ficha</a></td>

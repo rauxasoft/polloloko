@@ -4,6 +4,7 @@
 	<nav>
 		<ul>
 			<li><a href="/polloloko/">Home</a></li>
+			<li><a href="/polloloko/alta-producto">Alta de Producto</a>
 			<li><a href="/polloloko/listado-productos">Listado de Productos</a>
 			<li><a href="/polloloko/estadisticas">Estadística de Productos</a>
 			<li><a href="/polloloko/selector-pedidos">Listado de Pedidos</a>
