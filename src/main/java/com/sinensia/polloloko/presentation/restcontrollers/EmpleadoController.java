@@ -37,7 +37,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/{codigo}")
 	public Empleado read(@PathVariable Long codigo) {
-		
+	
 		Empleado empleado = empleadoServices.read(codigo);
 		
 		if(empleado == null) {
