@@ -13,7 +13,7 @@ INSERT INTO PRODUCTOS(CODIGO, NOMBRE, CATEGORIA, DESCRIPCION, PRECIO, FECHA_ALTA
 (16, 'Pollo Olof Palme', 'COMIDA', 'Delicioso pollo con Anguila y arroz blanco al puro estilo Sueco', 17.0 , '2014-11-02', FALSE),
 (17, 'Pollo Adenauer', 'COMIDA', 'Delicioso pollo con patatas y salsa de coles al puro estilo de Colonia', 15.6, '2014-10-17', FALSE),
 (18, 'Ballantiles', 'LICOR', 'Whisky de primera calidad', 5.0, '2014-10-20', FALSE),
-(19, 'DYC', 'LICOR', 'Whisky', 4.0, '2014-10-25', FALSE),
+(19, 'DYC', 'LICOR', 'Whisky', 4.0, '2014-10-25', TRUE),
 (20, 'Crema Catalana', 'POSTRE', 'Deliciosa Crema Catalana con receta tradicional', 6.2, '2014-10-25', FALSE),
 (21, 'Bomba de la Barceloneta', 'TAPA', 'Bomba de patata rellena de carne picante y brava.', 7.0 , '2014-10-25', FALSE),
 (22, 'Pollo Fidel', 'COMIDA', 'Delicioso pollo con salsa caribeña de primera calidad', 14.7 , '2014-10-25', FALSE),

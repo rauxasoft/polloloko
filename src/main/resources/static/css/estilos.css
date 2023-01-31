@@ -1,0 +1,35 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.full-table {
+	width: 100%;
+}
+
+.ficha, th {
+	text-align: right;
+}
+
+.to-left {
+	text-align: left;
+}
+
+.to-right {
+	text-align: right;
+}
+
+.center{
+	text-align: center;
+}
+
+#idCabecera {
+	background-color: rgb(254, 209, 1);
+	padding: 0.2%;
+}

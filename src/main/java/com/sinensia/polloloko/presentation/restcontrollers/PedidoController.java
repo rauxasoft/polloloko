@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.presentation.controllers;
+package com.sinensia.polloloko.presentation.restcontrollers;
 
 import java.util.Date;
 import java.util.List;

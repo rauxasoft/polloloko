@@ -1,4 +1,4 @@
-package com.sinensia.polloloko.backend.presentation.controllers;
+package com.sinensia.polloloko.backend.presentation.restcontrollers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sinensia.polloloko.backend.business.model.Empleado;
 import com.sinensia.polloloko.backend.business.services.EmpleadoServices;
 import com.sinensia.polloloko.presentation.config.MensajeError;
-import com.sinensia.polloloko.presentation.controllers.EmpleadoController;
+import com.sinensia.polloloko.presentation.restcontrollers.EmpleadoController;
 
 @WebMvcTest(controllers=EmpleadoController.class)
 public class EmpleadoControllerTest {
